@@ -1,0 +1,8 @@
+<!--pages/voice/voice.wxml-->
+<view class="yuyinWrap">
+  <textarea class='yuyinCon' placeholder='请输入内容' value='{{content}}' bindinput='conInput'></textarea>
+  <view class='voice'>
+    <button class="yuyinBtn start" bindtap='wordYun'>开始</button>
+    <button class="yuyinBtn" bindtap='end'>结束</button>
+  </view>
+</view>
