@@ -1,8 +1,29 @@
 <!--pages/voice/voice.wxml-->
-<view class="yuyinWrap">
-  <textarea class='yuyinCon' placeholder='请输入内容' value='{{content}}' bindinput='conInput'></textarea>
-  <view class='voice'>
-    <button class="yuyinBtn start" bindtap='wordYun'>开始</button>
-    <button class="yuyinBtn" bindtap='end'>结束</button>
+<view class="read">
+     <audio id="audio" src="{{src}}" loop="{{true}}" controls="{{false}}" binderror="audioError" bindplay="audioPlay" bindeneded="playEnd" bindtimeupdate="timeUpdate"></audio>
+    <view class="read-plan"> 
+      <!-- 进度条 -->
+       <view class="read-len">
+        <view class="time" bindtap="goSlow">{{dateUtil.dateFormat(currentTime,'mm:ss')}}</view>
+         <view class="body-view">
+            <slider bindchange="slider3change" block-size="20" max="{{total}}"/>
+        </view>
+        <view class="time" bindtap="goFast">{{dateUtil.dateFormat(currtRate,'mm:ss')}}</view>
+      </view> 
+      <view class="read-bot">
+        <view class="read-close">
+          <view class="clock">
+             <image src="../../images/clock.png" mode="widthFix"></image>
+          </view>
+          <image src="../../images/last.png" mode="widthFix"></image>
+          <image class="{{show1?'play active':'play'}}" src="../../images/play.png" bindtap="end" mode="widthFix"></image>
+          <image class="{{show2?'play active':'play'}}" src="../../images/pause.png" bindtap="wordYun" mode="widthFix"></image>
+          <image src="../../images/next.png" mode="widthFix"></image>
+          <view class="more">
+             <image src="../../images/more.png" mode="widthFix"></image>
+          </view>
+        </view>
+    </view> 
   </view>
 </view>
+
